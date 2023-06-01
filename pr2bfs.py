@@ -16,3 +16,27 @@ def bfs(visited, graph, node):
 
 print("Following is the Breadth-First Search") 
 bfs(visited, graph, '5') 
+
+
+#recursve
+def bfs_recursive(graph, queue):
+    if not queue:
+        return
+    
+    node = queue.pop(0)
+    print(node, end=" ")
+    
+    for neighbor in graph[node]:
+        if neighbor not in queue:
+            queue.append(neighbor)
+    
+    bfs_recursive(graph, queue)
+
+def bfs(graph, start_node):
+    queue = [start_node]
+    bfs_recursive(graph, queue)
+
+# Example usage:
+graph = {'5': ['3', '7'], '3': ['2', '4'], '7': ['8'], '2': [], '4': ['8'], '8': []}
+print("Following is the Breadth-First Search:")
+bfs(graph, '5')
